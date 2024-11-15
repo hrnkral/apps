@@ -18,6 +18,32 @@ namespace DataStructures.Array
             Count = 0;
         }
 
+        public void Add(T item) 
+        {
+            if (InnerList.Length == Count)
+            {
+                DoubleArray();
+            }
+            InnerList[Count] = item;
+            Count++;
+        }
+
+        private void DoubleArray()
+        {
+            var temp = new T[InnerList.Length * 2];
+            /*
+            for (int i = 0; i < temp.Length; i++) 
+            { 
+                temp[i] = InnerList[i];
+            
+            }
+            */
+
+            System.Array.Copy(InnerList, temp, InnerList.Length);
+            InnerList = temp;
+
+        }
+
         public object Clone()
         {
             throw new NotImplementedException();
