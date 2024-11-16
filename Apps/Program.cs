@@ -10,18 +10,24 @@ namespace Apps
     {
         private static void Main(string[] args)
         {
+            var p1 = new DataStructures.Array.Array<int>(1,2,3,4);
+            var p2 = new int[] {5,6,7,8,9};
+            var p3 = new List<int> { 10, 11, 12, 13, 14, 15 };
+            var p4 = new ArrayList() { 16, 17, 18, 19, 20, 21, 22 }; // ArrayList is not type safe
+
             var arr = new DataStructures
                 .Array
-                .Array<int>();
+                .Array<int>(p1);
 
-            arr.Add(63);
-            arr.Add(54);
-            arr.Add(47);
-            arr.Add(34);
-            arr.Add(41);
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
 
 
-            Console.WriteLine($"{arr.Count}/{arr.Capacity}");
+
+
+            
 
 
             Console.ReadKey();

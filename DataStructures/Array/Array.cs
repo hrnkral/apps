@@ -18,6 +18,28 @@ namespace DataStructures.Array
             Count = 0;
         }
 
+        public Array(params T[] initial)
+        {
+            InnerList = new T[initial.Length];
+            Count = 0;
+            foreach (var item in initial)
+            {
+                Add(item);
+            }
+        }
+        public Array(IEnumerable<T> collection)
+        {
+            InnerList = new T[collection.ToArray().Length];
+            Count = 0;
+            foreach (var item in collection)
+            {
+                Add(item);
+            }
+        }
+
+
+
+
         public void Add(T item) 
         {
             if (InnerList.Length == Count)
@@ -49,14 +71,11 @@ namespace DataStructures.Array
             throw new NotImplementedException();
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerator<T> GetEnumerator() => InnerList.Take(Count).GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }
